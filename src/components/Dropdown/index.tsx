@@ -5,13 +5,19 @@ import { AppContext } from "../../context"
 const dropdownMotion = {
   key: "dropdown",
   initial: {
-    y:"-120vh"
+    y:"-120vh",
+    opacity: 0
   },
   animate: {
-    y:0
+    y:0,
+    opacity: 1
   },
   exit: {
-    y:"20px"
+    y:"-120vh",
+    opacity: 0,
+    transition: {
+      duration: .5
+    }
   }
 }
 const Dropdown = ({ children }:React.PropsWithChildren) => {

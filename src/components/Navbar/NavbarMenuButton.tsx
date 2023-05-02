@@ -1,8 +1,8 @@
 import { MdArrowDropDown } from "react-icons/md"
 import { AppContext } from "../../context"
-import React, { useContext } from "react"
+import { useContext } from "react"
 
-const NavbarMenu = ({children}:React.PropsWithChildren) => {
+const NavbarMenuButton = () => {
 	const {isMenuOpen, setIsMenuOpen} = useContext(AppContext)
   return (
 	<>
@@ -14,9 +14,8 @@ const NavbarMenu = ({children}:React.PropsWithChildren) => {
 				<MdArrowDropDown color="white" size="35px" />
 			</span>
 		</button>
-		{isMenuOpen && children }
 	</>
   )
 }
 
-export default NavbarMenu
+export default NavbarMenuButton

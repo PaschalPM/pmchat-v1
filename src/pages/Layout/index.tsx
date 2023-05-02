@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import NavbarTitle from "../../components/Navbar/NavbarTitle";
 import Container from "../../components/Container";
-import NavbarMenu from "../../components/Navbar/NavbarMenu";
+import NavbarMenuButton from "../../components/Navbar/NavbarMenuButton";
 import AppSection from "./AppSection";
 import Dropdown from "../../components/Dropdown";
 import DropdownItem from "../../components/Dropdown/DropdownItem";
@@ -35,12 +35,11 @@ const Layout = () => {
         <Navbar>
           <Container classname="navbar-container">
             <NavbarTitle {...titleProps}>pmChat</NavbarTitle>
-			<NavbarMenu>
-				<Dropdown>
-					<DropdownItem {...dropdownItemIProps}/>
-					<DropdownItem {...dropdownItemIIProps}/>
-				</Dropdown>
-			</NavbarMenu>
+            <NavbarMenuButton/>
+            <Dropdown>
+              <DropdownItem {...dropdownItemIProps}/>
+              <DropdownItem {...dropdownItemIIProps}/>
+            </Dropdown>
           </Container>
         </Navbar>
         <Container classname="main-container">
