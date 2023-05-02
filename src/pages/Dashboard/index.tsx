@@ -9,10 +9,7 @@ const Dashboard = () => {
   const isMobileView = useMediaQuery("max-width:600px")
   const isDashboardPath = pathname == '/dashboard'
   const isChatBoxPath = /^\/dashboard\/chat\/[0-9]*/.test(pathname)
-
-
-
-
+  
   return (
     <div className="dashboard">
         { isChatBoxPath && (isMobileView) ? null : 

@@ -52,6 +52,7 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 1px 4px 30px rgba(0, 0, 0, .1);
     border-radius: .5em;
+    overflow: hidden;
 }
 @media (max-width: 600px) {
     .app {
@@ -60,12 +61,15 @@
     }
 }
 
-/***   CONTAINER   ***/
+/***   CONTAINERS   ***/
 .container {
 	padding: 0rem 0.75rem;
     width: 100%;
 }
 
+.container.main-container{
+    height: 100%;
+}
 /***   NAVBAR   ***/
 .navbar {
 	height: var(--nav-size);
@@ -186,16 +190,26 @@
 /***   DASHBOARD   ***/
 .dashboard{
     display: flex;
+    height: calc(100% - (var(--nav-size) + .5em));
+    gap: .5em;
 }
 
+.dashboard div{
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: .5em 1em;
+}
+
+@media screen and (max-width: 600px) {
+    .dashboard div{
+        border: none;
+    }
+}
 .dashboard .sideboard{
-    background-color: red;
-    width: 40%;
+    width: 40%; height: 100%;
 }
 
 .dashboard .mainboard{
-    background-color: green;
-    width: 60%;
+    flex-grow: 1;
 }
 
 @media (max-width: 600px) {
