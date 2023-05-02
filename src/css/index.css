@@ -44,7 +44,7 @@
 
 /***   APP   ***/
 .app {
-	width: 75%;
+	width: 80%;
 	margin: auto;
 	height: 95vh;
     backdrop-filter: blur(5px);
@@ -60,12 +60,13 @@
     }
 }
 
+/***   CONTAINER   ***/
 .container {
 	padding: 0rem 0.75rem;
     width: 100%;
 }
 
-/* NAVBAR */
+/***   NAVBAR   ***/
 .navbar {
 	height: var(--nav-size);
 	width: 100%;
@@ -146,6 +147,7 @@
 	position: relative;
 }
 
+/***   DROPDOWN   ***/
 .dropdown{
     display: none;
 }
@@ -177,5 +179,31 @@
         color: white;
         display: flex;
         align-items:center;
+    }
+}
+
+/******  PAGES   ******/
+/***   DASHBOARD   ***/
+.dashboard{
+    display: flex;
+}
+
+.dashboard .sideboard{
+    background-color: red;
+    width: 40%;
+}
+
+.dashboard .mainboard{
+    background-color: green;
+    width: 60%;
+}
+
+@media (max-width: 600px) {
+    .dashboard{
+        display: block;
+    }
+    
+    .dashboard .sideboard, .dashboard .mainboard{
+        width: 100%;
     }
 }

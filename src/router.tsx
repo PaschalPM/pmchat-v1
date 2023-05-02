@@ -1,4 +1,5 @@
 import Layout from "./pages/Layout";
+import Dashboard from "./pages/Dashboard";
 import { 
 		createBrowserRouter, 
 		createRoutesFromElements,
@@ -9,7 +10,11 @@ import {
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Layout/>}>
-			<Route index element={<h2>Main AREA</h2>}></Route>
+			<Route path="dashboard" element={<Dashboard/>}>
+				<Route path="chat/:id" element={"<h2> USERS </h2>"}>
+				</Route>
+			</Route>
+			<Route path="*" element={"Not found"}></Route>
 		</Route>
 	)
 )
