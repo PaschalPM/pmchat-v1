@@ -16,13 +16,13 @@ const UserSection = () => {
           <label htmlFor="stealth-mode"> stealth-mode </label>
         </div>
         <div>
-          <a href="">
+          <a href="" className="action">
             <IoMdLogOut />
             <small> logout </small>
           </a>
         </div>
         <div>
-          <a href="">
+          <a href="" className="action">
             <RiDeleteBinFill />
             <small> delete </small>
           </a>
