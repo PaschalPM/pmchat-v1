@@ -1,26 +1,31 @@
 import { Outlet } from "react-router-dom"
 import { useLocation } from "react-router-dom"
-import { useMediaQuery } from "../../custom_hooks"
-import { useLayoutEffect, useState } from "react"
+import UserSection from "../../components/UserSection"
+import { useContext } from "react"
+import { AppContext } from "../../context"
+import { motion as m } from "framer-motion"
 
 const Dashboard = () => {
-  // const [isMobileView, setIsMobileView] = useState(false)
   const { pathname } = useLocation()
-  const isMobileView = useMediaQuery("max-width:600px")
   const isDashboardPath = pathname == '/dashboard'
   const isChatBoxPath = /^\/dashboard\/chat\/[0-9]*/.test(pathname)
-  
+  const {isMobileView, userDashOpen} = useContext(AppContext)
+
   return (
     <div className="dashboard">
         { isChatBoxPath && (isMobileView) ? null : 
           <div className="sideboard">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, laboriosam.
+            {!isMobileView && <UserSection/>}
+            <div className="other-users-section">
+              Lorem ipsum dolor sit.
+            </div>
           </div> 
         }
         <div className="mainboard">
-          { isDashboardPath && (isMobileView) ? null : isDashboardPath ? "EMPTY" : <Outlet></Outlet>}
-
+          { isDashboardPath && (isMobileView) ? null : isDashboardPath ? 
+          "EMPTY" : <Outlet></Outlet>}
         </div>
+        <>{isMobileView && userDashOpen && <m.div><UserSection/></m.div>}</>
     </div>
   )
 }

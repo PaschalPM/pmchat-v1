@@ -1,9 +1,17 @@
+import { useContext } from "react"
 import { DropdownItemType } from "./@types"
+import { AppContext } from "../../context"
 
-const DropdownItem = ({icon, text, href}:DropdownItemType) => {
-  return (
+const DropdownItem = ({icon, text, href, handleClick}:DropdownItemType) => {
+	const {setIsMenuOpen} = useContext(AppContext)
+	return (
 	<div className="dropdown-item">
-		<a href={href}>
+		<a href={href} 
+			onClick={() => {
+				(handleClick as ()=>void)()
+				setIsMenuOpen(false)
+			}}
+		>
 			{icon}
 			<span style={{
 				marginLeft:'10px',

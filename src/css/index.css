@@ -11,6 +11,7 @@
     --primary-gradient: linear-gradient(to left top, var(--prim-color)50%, var(--ter-color));
 
     --error-color:rgba(184, 9, 24, 0.8);
+    --danger-color: rgb(182, 8, 22);
     --success-color:rgba(4, 135, 58, 0.8);
     --warning-color:rgba(153, 117, 10, 0.8);
     
@@ -36,7 +37,7 @@
     align-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .layout{
         background-repeat: repeat;
     }
@@ -47,14 +48,16 @@
 	width: 80%;
 	margin: auto;
 	height: 95vh;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background-image: linear-gradient(to right bottom, 
+    rgba(255, 255, 255, .7), rgba(255, 255, 255, .1));
+    backdrop-filter: blur(.5em);
+    -webkit-backdrop-filter: blur(.25em);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 1px 4px 30px rgba(0, 0, 0, .1);
     border-radius: .5em;
     overflow: hidden;
 }
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .app {
         height: 100vh;
         width: 100%;
@@ -69,6 +72,7 @@
 
 .container.main-container{
     height: 100%;
+    margin: auto;
 }
 /***   NAVBAR   ***/
 .navbar {
@@ -86,7 +90,7 @@
    align-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .navbar-container {
         justify-content: space-between;
     }
@@ -96,7 +100,7 @@
     display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .navbar-menu-button {
         all: unset;
         width: calc(var(--nav-size) * 0.8);
@@ -155,7 +159,7 @@
 .dropdown{
     display: none;
 }
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .dropdown{
         display: block;
         position: absolute;
@@ -192,32 +196,127 @@
     display: flex;
     height: calc(100% - (var(--nav-size) + .5em));
     gap: .5em;
+    padding-top: .5em;
 }
 
-.dashboard div{
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: .5em 1em;
+.dashboard .sideboard{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    background-image: linear-gradient(to right bottom, 
+    rgba(255, 255, 255, .8), rgba(255, 255, 255, .3));
+    border-radius: .5em;
+    flex: 1;
+    padding: .5em;
+    justify-content: space-evenly;
+    font-size: .9em;
 }
 
-@media screen and (max-width: 600px) {
-    .dashboard div{
-        border: none;
+ .user-section {
+    flex: 1;
+    box-shadow: 0px 1px .5px rgba(128, 128, 128, 0.489);
+    padding: .25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--prim-color);
+    position: relative;
+    font-weight: 600;
+}
+
+.user-section .avatar-container{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    background-image: url("../assets/avatars/icons8-circled-user-male-skin-type-6-96.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.user-section > small{
+    margin-top: -.25em;
+    letter-spacing: 1.1px;
+    font-size: .68em;
+}
+
+@media (max-width: 700px){
+    .user-section {
+        position: fixed;
+        width: 65%;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        height: fit-content;
+        box-shadow: 3px 5px 5px rgb(81, 78, 78);
+        padding: 2em 0;
+        /* border: .5px solid grey; */
+        background-image: linear-gradient(to right bottom, 
+    rgba(255, 255, 255, .8), rgba(255, 255, 255, .3));
     }
 }
-.dashboard .sideboard{
-    width: 40%; height: 100%;
+
+.user-section .options {
+    margin: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
+.user-section .options > div a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.user-section .options > div:last-child a {
+    color: var(--danger-color);
+}
+.user-section .stealth-mode-switch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: .5em; right: .5em;
+}
+.user-section .stealth-mode-switch label{
+    display: none;
+}
+@media (max-width: 700px){
+    .user-section .stealth-mode-switch {
+        top: 1em; right: .5em;
+    }
+    .user-section .stealth-mode-switch label{
+        display: inline;
+        font-size: .65em;
+        letter-spacing: 1.25px;
+        font-weight: 600;
+    }
+}
+
+ .sideboard > .other-users-section {
+    flex-grow: 3;
+}
 .dashboard .mainboard{
-    flex-grow: 1;
+    flex: 2.2;
+    padding: .5em;
 }
 
-@media (max-width: 600px) {
+
+
+@media (max-width: 700px) {
     .dashboard{
         display: block;
     }
-    
     .dashboard .sideboard, .dashboard .mainboard{
         width: 100%;
     }
+}
+
+.card{
+    background-color: rgba(235, 255, 204, .35);
+    padding: 1em 1em;
+    font-size: .85em;
+    font-weight: 600;
 }

@@ -12,33 +12,46 @@ import { NavbarTitleType } from "../../components/Navbar/@types";
 import { IoMdLogOut } from "react-icons/io";
 import { FaUserTie } from "react-icons/fa";
 
+import { DropdownItemType } from "../../components/Dropdown/@types";
+import { useContext } from "react";
+import { AppContext } from "../../context";
+
 const titleProps: NavbarTitleType = {
   href: "/",
   icon: <MdOutlineMarkUnreadChatAlt />,
 };
 
-const dropdownItemIProps = {
-    icon: <FaUserTie />, 
-    href: "#", 
-    text: "User"
-}
-
-const dropdownItemIIProps = {
-    icon: <IoMdLogOut />, 
-    href: "#", 
-    text: "Logout"
-}
 const Layout = () => {
-  return ( 	
+
+  const {user, setUserDashOpen} = useContext(AppContext)
+
+  const dropdownItemIProps: DropdownItemType = {
+    icon: <FaUserTie />,
+    href: "#",
+    text: "User",
+    handleClick: () => {
+      if (user){
+        setUserDashOpen((v)=> !v)
+      }
+    },
+  };
+
+  const dropdownItemIIProps: DropdownItemType = {
+    icon: <IoMdLogOut />,
+    href: "#",
+    text: "Logout",
+  };
+
+  return (
     <div className="layout">
       <AppSection>
         <Navbar>
           <Container classname="navbar-container">
             <NavbarTitle {...titleProps}>pmChat</NavbarTitle>
-            <NavbarMenuButton/>
+            <NavbarMenuButton />
             <Dropdown>
-              <DropdownItem {...dropdownItemIProps}/>
-              <DropdownItem {...dropdownItemIIProps}/>
+              <DropdownItem {...dropdownItemIProps} />
+              <DropdownItem {...dropdownItemIIProps} />
             </Dropdown>
           </Container>
         </Navbar>
