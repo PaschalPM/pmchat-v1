@@ -1,33 +1,45 @@
-import { Outlet } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import UserSection from "../../components/UserSection"
 import { useContext } from "react"
 import { AppContext } from "../../context"
-import { motion as m } from "framer-motion"
 
 const Dashboard = () => {
   const { pathname } = useLocation()
-  const isDashboardPath = pathname == '/dashboard'
-  const isChatBoxPath = /^\/dashboard\/chat\/[0-9]*/.test(pathname)
-  const {isMobileView, userDashOpen} = useContext(AppContext)
+  const isDashboardPath = /^\/dashboard$/.test(pathname)
+  const isChatPath = /^\/chat$/.test(pathname)
+  const isActiveChatPath = /^\/chat\/[0-9]+/.test(pathname)
+  const {isMobileView} = useContext(AppContext)
+
+  if (isMobileView) {
+    if (isDashboardPath) {
+      return (<UserSection/>)
+    } else if (isChatPath) {
+      return (<div> This is Chat Path</div>)
+    } else if (isActiveChatPath) {
+      return (<div> This is Active Chat Path</div>) 
+    }
+  } 
+
 
   return (
     <div className="dashboard">
-        { isChatBoxPath && (isMobileView) ? null : 
+ 
           <div className="sideboard">
             {!isMobileView && <UserSection/>}
             <div className="other-users-section">
               Lorem ipsum dolor sit.
             </div>
-          </div> 
-        }
+          </div>
         <div className="mainboard">
-          { isDashboardPath && (isMobileView) ? null : isDashboardPath ? 
-          "EMPTY" : <Outlet></Outlet>}
+          { (isChatPath || isDashboardPath) ? 
+              <div>EMPTY</div> : 
+              isActiveChatPath ? 
+              <div> IS ACTIVE CHAT </div> : 
+              null}
         </div>
-        <>{isMobileView && userDashOpen && <m.div><UserSection/></m.div>}</>
     </div>
   )
+  
 }
 
 export default Dashboard

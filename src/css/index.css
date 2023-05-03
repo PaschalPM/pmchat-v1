@@ -9,7 +9,8 @@
 	--white:#ffffff;
 	--light-color:#f2f2f2;
     --primary-gradient: linear-gradient(to left top, var(--prim-color)50%, var(--ter-color));
-
+    --white-gradient: linear-gradient(to right bottom, 
+    rgba(255, 255, 255, .8), rgba(255, 255, 255, .3));
     --error-color:rgba(184, 9, 24, 0.8);
     --danger-color: rgb(182, 8, 22);
     --success-color:rgba(4, 135, 58, 0.8);
@@ -56,6 +57,7 @@
     box-shadow: 1px 4px 30px rgba(0, 0, 0, .1);
     border-radius: .5em;
     overflow: hidden;
+    user-select:none;
 }
 @media (max-width: 700px) {
     .app {
@@ -204,8 +206,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    background-image: linear-gradient(to right bottom, 
-    rgba(255, 255, 255, .8), rgba(255, 255, 255, .3));
+    background-image: var(--white-gradient);
     border-radius: .5em;
     flex: 1;
     padding: .5em;
@@ -213,7 +214,7 @@
     font-size: .9em;
 }
 
- .user-section {
+.user-section {
     flex: 1;
     box-shadow: 0px 1px .5px rgba(128, 128, 128, 0.489);
     padding: .25em;
@@ -237,7 +238,6 @@
 
 .user-section > small{
     margin-top: -.25em;
-    letter-spacing: 1.1px;
     font-size: .68em;
 }
 
@@ -250,14 +250,14 @@
         height: fit-content;
         box-shadow: 3px 5px 5px rgb(81, 78, 78);
         padding: 2em 0;
-        /* border: .5px solid grey; */
-        background-image: linear-gradient(to right bottom, 
-    rgba(255, 255, 255, .8), rgba(255, 255, 255, .3));
+
+        background-image: var(--white-gradient);
     }
 }
 
 .user-section .options {
-    margin: 1em 0;
+    margin-top: 1.5em;
+    margin-bottom: .5em;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -295,15 +295,13 @@
     }
 }
 
- .sideboard > .other-users-section {
+.sideboard > .other-users-section {
     flex-grow: 3;
 }
 .dashboard .mainboard{
     flex: 2.2;
     padding: .5em;
 }
-
-
 
 @media (max-width: 700px) {
     .dashboard{

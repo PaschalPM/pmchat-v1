@@ -8,32 +8,24 @@ import Dropdown from "../../components/Dropdown";
 import DropdownItem from "../../components/Dropdown/DropdownItem";
 
 import { MdOutlineMarkUnreadChatAlt } from "react-icons/md";
-import { NavbarTitleType } from "../../components/Navbar/@types";
 import { IoMdLogOut } from "react-icons/io";
 import { FaUserTie } from "react-icons/fa";
 
+import { NavbarTitleType } from "../../components/Navbar/@types";
 import { DropdownItemType } from "../../components/Dropdown/@types";
-import { useContext } from "react";
-import { AppContext } from "../../context";
 
-const titleProps: NavbarTitleType = {
-  href: "/",
-  icon: <MdOutlineMarkUnreadChatAlt />,
-};
 
 const Layout = () => {
 
-  const {user, setUserDashOpen} = useContext(AppContext)
+  const titleProps: NavbarTitleType = {
+    href: "/",
+    icon: <MdOutlineMarkUnreadChatAlt />,
+  };
 
   const dropdownItemIProps: DropdownItemType = {
     icon: <FaUserTie />,
     href: "#",
     text: "User",
-    handleClick: () => {
-      if (user){
-        setUserDashOpen((v)=> !v)
-      }
-    },
   };
 
   const dropdownItemIIProps: DropdownItemType = {
