@@ -1,15 +1,17 @@
 import { IoMdLogOut } from "react-icons/io";
 import { RiDeleteBinFill } from "react-icons/ri";
-import SwitchCheck from "./SwitchCheck";
+import SwitchCheck from "../SwitchCheck";
+import { UserProfileType } from "../@types";
 
-
-const UserSection = () => {
+const UserSection = ({imgSrc, email, displayName}:UserProfileType) => {
   
   return (
      <div className="user-section">
-      <span className="avatar-container"> </span>
-      <h1> Hi, Pasmac</h1>
-      <small> okaforpaschal018@gmail.com </small>
+      <span className="avatar-container"> 
+        <img src={imgSrc} alt={imgSrc} />
+      </span>
+      <h1> Hi, { displayName }</h1>
+      <small> { email } </small>
       <div className="options">
         <div className="stealth-mode-switch">
           <SwitchCheck />

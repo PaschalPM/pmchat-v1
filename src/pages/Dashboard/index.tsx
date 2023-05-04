@@ -1,7 +1,11 @@
 import { useLocation } from "react-router-dom"
-import UserSection from "../../components/UserSection"
-import { useContext } from "react"
+import UserSection from "../../components/Dashboard/UserSection"
+import { useContext, useState } from "react"
 import { AppContext } from "../../context"
+
+import OtherUsersCard from "../../components/Dashboard/OtherUsersCard"
+
+import { UserProfileType } from "../../components/@types"
 
 const Dashboard = () => {
   const { pathname } = useLocation()
@@ -10,9 +14,68 @@ const Dashboard = () => {
   const isActiveChatPath = /^\/chat\/[0-9]+/.test(pathname)
   const {isMobileView} = useContext(AppContext)
 
+  const userSectionProp: UserProfileType = {
+    userId: "1",
+    displayName: "Pasmac",
+    email: "okaforpaschal018@gmail.com",
+    imgSrc: "../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+  }
+
+  const testOtherUsers: Array<UserProfileType> = [
+    {
+      userId: "test_id",
+      displayName: "John Doe",
+      email: "johndoe@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    },
+    {
+      userId: "test_id",
+      displayName: "Richard Nick",
+      email: "richnick@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    },
+    {
+      userId: "test_id",
+      displayName: "Eze Taslim",
+      email: "ezetaslim@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    },
+    {
+      userId: "test_id",
+      displayName: "Terry Abu",
+      email: "terryabu@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    },
+    {
+      userId: "test_id",
+      displayName: "Halima Ikye",
+      email: "halimaikye@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    },
+    {
+      userId: "test_id",
+      displayName: "Anna Smith",
+      email: "annasmith@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    },
+    {
+      userId: "test_id",
+      displayName: "Marcus Mbachu",
+      email: "capua@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    },
+    {
+      userId: "test_id",
+      displayName: "Kone",
+      email: "kone@gmail.com",
+      imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
+    }
+  ]  
+
+  const [otherUsers] = useState<Array<UserProfileType>>(testOtherUsers)
   if (isMobileView) {
     if (isDashboardPath) {
-      return (<UserSection/>)
+      return (<UserSection {...userSectionProp}/>)
     } else if (isChatPath) {
       return (<div> This is Chat Path</div>)
     } else if (isActiveChatPath) {
@@ -23,11 +86,13 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
- 
           <div className="sideboard">
-            {!isMobileView && <UserSection/>}
+            {!isMobileView && <UserSection {...userSectionProp}/>}
             <div className="other-users-section">
-              Lorem ipsum dolor sit.
+              <input type="search" id="user-search" placeholder="search for a chatmate"/>
+              { otherUsers.map((otherUser:UserProfileType)=>(
+                  <OtherUsersCard {...otherUser}/>
+              )) }
             </div>
           </div>
         <div className="mainboard">
