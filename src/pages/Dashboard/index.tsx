@@ -48,7 +48,7 @@ const Dashboard = () => {
     },
     {
       userId: "test_id",
-      displayName: "Halima Ikye",
+      displayName: "Halima Iyke",
       email: "halimaikye@gmail.com",
       imgSrc: "../../src/assets/avatars/icons8-circled-user-male-skin-type-6-96.png"
     },

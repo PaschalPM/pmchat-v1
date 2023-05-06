@@ -72,7 +72,7 @@
 
 /***   CONTAINERS   ***/
 .container {
-	padding: 0rem 0.75rem;
+	padding: 0rem .25em;
     width: 100%;
 }
 
